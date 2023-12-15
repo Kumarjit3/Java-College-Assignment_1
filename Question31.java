@@ -35,5 +35,6 @@ public class Question31
       for(int a : a1)
       System.out.print(" "+a+" ,");
       System.out.print("\n");
+      sc.close();
   }
 }

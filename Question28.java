@@ -75,6 +75,6 @@ public class Question28
           }
             System.out.print("\n");
        }
-         
+       sc.close();  
   }
 }

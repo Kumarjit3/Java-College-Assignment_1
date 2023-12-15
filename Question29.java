@@ -23,7 +23,8 @@ class Rectangle
   
    public double get_area()
    {
-      return(this.width*this.length);
+      this.area = this.width*this.length;
+      return this.area;
    }
 
    public String get_colour()
