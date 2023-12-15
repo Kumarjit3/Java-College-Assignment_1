@@ -8,7 +8,7 @@ public class Question1
         System.out.print("\nEnter a number : ");
         int n = sc.nextInt();
 
-        if(n%2==0)
+        if(n%2==0) 
         {
            System.out.print("\nThe number "+n+" is Even\n");
         }
