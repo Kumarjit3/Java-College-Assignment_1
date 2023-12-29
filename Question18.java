@@ -21,6 +21,16 @@ class Multiply
        this.result = num1*num2;
     }
 
+    public int getNum1()
+    {
+        return this.num1;
+    }
+ 
+    public int getNum2()
+    {
+        return this.num2;
+    }
+
     public int getResult()
     {
         return this.result;
