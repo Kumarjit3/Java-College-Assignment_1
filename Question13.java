@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 class MatrixMultiplication
 {
-    public int row;
-    public int column;
-    int[][] mat = new int[row][column];
+    private int row;
+    private int column;
+    int[][] mat;
     Scanner sc = new Scanner(System.in);
 
-    public MatrixMultiplication(int row,int column)
+    public void CreateMatrix(int row,int column)
     {
        this.row = row;
        this.column = column;
@@ -43,9 +43,10 @@ class MatrixMultiplication
     }
 
    
-    public int[][] matrixMultiplication(MatrixMultiplication m)
+    public MatrixMultiplication matrixMultiplication(MatrixMultiplication m)
     {
-       int[][] mrr = new int[this.row][m.column];
+       MatrixMultiplication mrr = new MatrixMultiplication();
+       mrr.CreateMatrix(this.row,m.column);
        System.out.print("\n\n");
        for(int i=0; i<this.row; i++)
        {
@@ -56,7 +57,7 @@ class MatrixMultiplication
              {
                 sum+=this.mat[i][k]*m.mat[k][j]; 
              }
-             mrr[i][j]=sum;
+             mrr.mat[i][j]=sum;
           }
        }
         return mrr;
@@ -70,33 +71,34 @@ public class Question13
    public static void main(String[] args)
    {
       Scanner sc = new Scanner(System.in);
+
+      MatrixMultiplication m1 = new MatrixMultiplication();
       System.out.print("\n\nEnter total number of row of the first matrix : ");
       int r1 = sc.nextInt();
       System.out.print("\n\nEnter total number of column of the first matrix : ");
       int c1 = sc.nextInt();
+      System.out.print("\nEnter the "+r1*c1+" values of the first matrix : \n");
+      m1.CreateMatrix(r1,c1);
+      m1.setMatrix();
+     
+      MatrixMultiplication m2 = new MatrixMultiplication();
       System.out.print("\n\nEnter total number of row of the second matrix : ");
       int r2 = sc.nextInt();
       System.out.print("\n\nEnter total number of column of the second matrix : ");
       int c2 = sc.nextInt();
-      MatrixMultiplication m1 = new MatrixMultiplication(r1,c1);
-      MatrixMultiplication m2 = new MatrixMultiplication(r2,c2);
-
-      m1.setMatrix();
-      m1.showMatrix();
+      System.out.print("\nEnter the "+r2*c2+" values of the second matrix : \n");
+      m2.CreateMatrix(r2,c2);
       m2.setMatrix();
+      
+      System.out.print("\nThe "+r1*c1+" values of the first matrix are : \n");
+      m1.showMatrix();
+      System.out.print("\nThe "+r2*c2+" values of the second matrix are : \n");
       m2.showMatrix();
-      int[][] mm = m1.matrixMultiplication(m2);
-
-      System.out.print("\nAfter matrix multiplication the matrix looks like : \n");
-      for(int i=0; i<m1.row; i++)
-      {
-         for(int j=0; j<m2.column; j++)
-         {
-            System.out.print(" "+mm[i][j]+" ");
-         }
-           System.out.print("\n");
-      }
-        System.out.print("\n\n\n");
-        sc.close();
+      
+      MatrixMultiplication mm = m1.matrixMultiplication(m2);
+      System.out.print("\nMatrix multiplication result is : \n");
+      mm.showMatrix();
+      System.out.print("\n\n\n");
+      sc.close();
    }
 }
